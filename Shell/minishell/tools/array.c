@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 20:05:38 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/11 21:05:46 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/07/11 22:33:46 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void displayTabs(char **tabs)
 {
     if (tabs != NULL) {
         for (int i = 0; tabs[i] != NULL; i++)
-            fprintf(stdout, "[%s]\n", (tabs[i] != NULL ? tabs[i] : "NULL"));
+            fprintf(stdout, "%s\n", (tabs[i] != NULL ? tabs[i] : "NULL"));
     }
 }
 

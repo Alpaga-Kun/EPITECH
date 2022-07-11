@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 20:01:02 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/11 21:27:00 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/07/11 22:35:37 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@ int coreSystem(data_shell *infoShell)
     if (isatty(0))
         fprintf(stdout, "$> ");
     while (getline(&line, &len, stdin) != EOF) {
-        if (isatty(0))
+        if (strlen(line) <= 1 || notOnlyDelimiter(line, " \t\n") == false) {
             fprintf(stdout, "$> ");
-        if (strlen(line) <= 1 || notOnlyDelimiter(line, " \t\n") == false)
             continue;
+        }
         infoShell->commands = wordsArray(line, " \t\n");
         (infoShell->commands != NULL ? searchSystem(infoShell) : 0);
         freeTabs(infoShell->commands);
+        if (isatty(0))
+            fprintf(stdout, "$> ");
     }
     if (line)
         free(line);
