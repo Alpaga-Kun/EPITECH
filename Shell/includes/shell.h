@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:46:48 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/11 21:40:49 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/07/11 22:19:28 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct ptr_builtin_s
 } ptrBuiltin;
 
 /* ░░░░░░░░░░░░░░░░░ ERROR ░░░░░░░░░░░░░░░░░░░░░░░░░░ */
-int unknowCommands(char const *command);
+int setErrorMessage(char const *command, char const *msg, bool status);
 void errorMessage(char const *msg, int exitStatus);
 /* ░░░░░░░░░░░░░░░░░ TOOLS ░░░░░░░░░░░░░░░░░░░░░░░░░░ */
 char **wordsArray(char *line, char const *delim);

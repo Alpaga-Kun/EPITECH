@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 20:17:20 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/11 20:47:25 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/07/11 22:21:20 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int searchSystem(data_shell *infoShell)
         if (strcmp(infoShell->commands[0], buitlin[i].builtin) == 0)
             return (buitlin[i].ptr(infoShell));
     return ((infoShell->exec = findPath(infoShell)) != NULL ? \
-        execBinary(infoShell) : unknowCommands(infoShell->commands[0]));
+        execBinary(infoShell) :
+        setErrorMessage(infoShell->commands[0], "Command not found.", true));
     return (0);
 }

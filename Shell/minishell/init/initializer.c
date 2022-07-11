@@ -6,13 +6,13 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:54:24 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/10 22:17:21 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/07/11 22:29:17 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prototypes.h"
 
-void setEnv(data_shell *infoShell)
+static void setEnv(data_shell *infoShell)
 {
     char *cwd = NULL;
     char pwd[PATH_MAX] = {0};
@@ -26,7 +26,7 @@ void setEnv(data_shell *infoShell)
     infoShell->myenv[4] = NULL;
 }
 
-void saveEnv(char **env, data_shell *infoShell)
+static void saveEnv(char **env, data_shell *infoShell)
 {
     int j = 0;
     infoShell->myenv = malloc(sizeof(char **) * (sizeTab(env) + 1));
