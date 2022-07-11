@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structure.c                                        :+:      :+:    :+:   */
+/*   coreSystem.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/10 20:54:41 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/11 20:09:43 by Alpaga-Kun       ###   ########.fr       */
+/*   Created: 2022/07/11 20:01:02 by Alpaga-Kun        #+#    #+#             */
+/*   Updated: 2022/07/11 20:15:07 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prototypes.h"
 
-data_shell *structure(char **env)
+int coreSystem(data_shell *infoShell)
 {
-    data_shell *new = malloc(sizeof(data_shell));
+    size_t len = 0;
+    char *line = NULL;
 
-    if (!new)
-        errorMessage("malloc()", 84);
-    new->commands = NULL;
-    initializer(env, new);
-    return (new);
-}
-
-void freeStructure(data_shell *infoShell)
-{
-    freeTabs(infoShell->myenv);
-    if (infoShell)
-        free(infoShell);
+    fprintf(stdout, "$> ");
+    while (getline(&line, &len, stdin) != EOF) {
+        fprintf(stdout, "%s\n", line);
+        infoShell->commands = wordsArray(line, " \t\n");
+        freeTabs(infoShell->commands);
+        fprintf(stdout, "$> ");
+    }
+    if (line)
+        free(line);
 }

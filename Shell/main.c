@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 19:50:35 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/11 19:47:08 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/07/11 19:55:25 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 int main(int ac, char **av, char **env)
 {
     data_shell *infoShell = NULL;
-    infoShell = structure(env);
 
-    for (int i = 0; infoShell->myenv[i] != NULL; i++) {
-        printf("[%d]: [%s]\n", i, (infoShell->myenv[i] == NULL ? "NULL" : infoShell->myenv[i]));
+    if (ac == 1) {
+        infoShell = structure(env);
+        coreSystem(infoShell);
+        freeStructure(infoShell);
     }
-    freeStructure(infoShell);
     return (0);
 }
