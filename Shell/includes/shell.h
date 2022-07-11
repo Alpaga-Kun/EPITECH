@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:46:48 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/11 20:54:13 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/07/11 21:12:16 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ char **wordsArray(char *line, char const *delim);
 void freeTabs(char **tabs);
 void displayTabs(char **tabs);
 size_t sizeTab(char **tabs);
+bool notOnlyDelimiter(char const *line, char const *delim);
 /* ░░░░░░░░░░░░░░░░░ INITIALISATION ░░░░░░░░░░░░░░░░░ */
 void initializer(char **env, data_shell *infoShell);
 data_shell *structure(char **env);

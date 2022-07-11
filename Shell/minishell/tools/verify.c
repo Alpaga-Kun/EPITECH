@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prototypes.h                                       :+:      :+:    :+:   */
+/*   verify.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/10 19:51:50 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/11 21:08:42 by Alpaga-Kun       ###   ########.fr       */
+/*   Created: 2022/07/11 21:07:17 by Alpaga-Kun        #+#    #+#             */
+/*   Updated: 2022/07/11 21:26:48 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "prototypes.h"
 
-#include <stdio.h>
-#include <ctype.h>
-#include <stdlib.h>
-#include <string.h>
-#include <limits.h>
-#include <unistd.h>
-#include <stdbool.h>
-
-#include "shell.h"
+bool notOnlyDelimiter(char const *line, char const *delim)
+{
+    for (int i = 0; line[i] != '\0'; i++)
+        if (isprint(line[i]) && isalnum(line[i]))
+            return (true);
+    return (false);
+}
