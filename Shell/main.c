@@ -21,7 +21,5 @@ int main(int ac, char **av, char **env)
         printf("[%d]: [%s]\n", i, (infoShell->myenv[i] == NULL ? "NULL" : infoShell->myenv[i]));
     }
     freeStructure(infoShell);
-    if (infoShell)
-        free(infoShell);
     return (0);
 }

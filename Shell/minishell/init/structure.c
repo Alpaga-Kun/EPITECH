@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:54:41 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/11 19:45:33 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/07/11 19:51:59 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,6 @@ void freeStructure(data_shell *infoShell)
         for (size_t i = 0; i != sizeTab(infoShell->myenv); free(infoShell->myenv[i]), i++);
         free(infoShell->myenv);
     }
+    if (infoShell)
+        free(infoShell);
 }
