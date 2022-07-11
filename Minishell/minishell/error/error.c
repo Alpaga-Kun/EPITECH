@@ -1,0 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/10 21:16:07 by Alpaga-Kun        #+#    #+#             */
+/*   Updated: 2022/07/10 21:17:17 by Alpaga-Kun       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "prototypes.h"
+
+void errorMessage(char const *msg, int exitStatus)
+{
+    perror(msg);
+    exit(exitStatus);
+}
