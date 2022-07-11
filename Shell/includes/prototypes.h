@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 19:51:50 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/11 21:08:42 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/07/11 21:40:44 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
-#include <limits.h>
 #include <unistd.h>
 #include <stdbool.h>
 

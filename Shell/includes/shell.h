@@ -6,17 +6,21 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:46:48 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/11 21:12:16 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/07/11 21:40:49 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+
+#define PATH_MAX 4096
 
 typedef struct data_shell_s
 {
     char *exec;
     char **myenv;
     char **commands;
+    char *oldPath[PATH_MAX];
+    char *currentPath[PATH_MAX];
 } data_shell;
 
 typedef struct ptr_builtin_s
