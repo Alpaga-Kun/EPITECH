@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   find.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/10 21:16:07 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/12 08:00:55 by Alpaga-Kun       ###   ########.fr       */
+/*   Created: 2022/07/12 07:50:40 by Alpaga-Kun        #+#    #+#             */
+/*   Updated: 2022/07/12 08:11:06 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prototypes.h"
 
-void errorMessage(char const *msg, int exitStatus)
+char *findInEnv(char **myenv, char const *word)
 {
-    perror(msg);
-    exit(exitStatus);
-}
+    int j = strlen(word);
 
-int setErrorMessage(char const *command, char const *msg, int returnStatus)
-{
-    fprintf(stderr, "%s: %s\n", command, msg);
-    return (returnStatus);
+    for (int i = 0; myenv[i] != NULL; i++)
+        if (strncmp(myenv[i], word, strlen(word)) == 0)
+            return (strdup(&myenv[i][j]));
+    return (NULL);
 }

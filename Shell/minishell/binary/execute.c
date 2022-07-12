@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 20:52:18 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/11 22:42:07 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/07/12 08:01:27 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int execBinary(data_shell *infoShell)
 
     stat(infoShell->exec, &stats);
     if (S_ISDIR(stats.st_mode))
-        return (setErrorMessage(infoShell->commands[0], "Permission denied.", false));
+        return (setErrorMessage(infoShell->commands[0], "Permission denied.", 0));
     pid = fork();
     (pid == 0 ? execve(infoShell->exec, infoShell->commands, infoShell->myenv) : getStatus(pid));
     if (infoShell->exec)

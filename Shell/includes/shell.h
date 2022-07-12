@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:46:48 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/11 22:19:28 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/07/12 09:08:25 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 typedef struct data_shell_s
 {
     char *exec;
+    char *home;
     char **myenv;
     char **commands;
-    char *oldPath[PATH_MAX];
-    char *currentPath[PATH_MAX];
+    char *oldPath;
+    bool pathDir;
 } data_shell;
 
 typedef struct ptr_builtin_s
@@ -30,18 +31,19 @@ typedef struct ptr_builtin_s
 } ptrBuiltin;
 
 /* ░░░░░░░░░░░░░░░░░ ERROR ░░░░░░░░░░░░░░░░░░░░░░░░░░ */
-int setErrorMessage(char const *command, char const *msg, bool status);
 void errorMessage(char const *msg, int exitStatus);
+int setErrorMessage(char const *command, char const *msg, int returnStatus);
 /* ░░░░░░░░░░░░░░░░░ TOOLS ░░░░░░░░░░░░░░░░░░░░░░░░░░ */
-char **wordsArray(char *line, char const *delim);
 void freeTabs(char **tabs);
-void displayTabs(char **tabs);
 size_t sizeTab(char **tabs);
+void displayTabs(char **tabs);
+char *findInEnv(char **myenv, char const *word);
+char **wordsArray(char *line, char const *delim);
 bool notOnlyDelimiter(char const *line, char const *delim);
 /* ░░░░░░░░░░░░░░░░░ INITIALISATION ░░░░░░░░░░░░░░░░░ */
-void initializer(char **env, data_shell *infoShell);
 data_shell *structure(char **env);
 void freeStructure(data_shell *infoShell);
+void initializer(char **env, data_shell *infoShell);
 /* ░░░░░░░░░░░░░░░░░ CORE SYSTEM ░░░░░░░░░░░░░░░░░░░░░ */
 int coreSystem(data_shell *infoShell);
 int searchSystem(data_shell *infoShell);

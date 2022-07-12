@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 20:01:02 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/11 22:35:37 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/07/12 09:09:15 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int coreSystem(data_shell *infoShell)
             fprintf(stdout, "$> ");
             continue;
         }
+        if (strncmp(line, "exit", 4) == 0)
+            break;
         infoShell->commands = wordsArray(line, " \t\n");
         (infoShell->commands != NULL ? searchSystem(infoShell) : 0);
         freeTabs(infoShell->commands);
