@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 20:30:16 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/12 09:01:55 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/07/12 09:24:49 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ int cdSystem(data_shell *infoShell)
         return (chdir(infoShell->home));
     if (infoShell->commands[1] != NULL && access(infoShell->commands[1], R_OK) == 0 && S_ISDIR(stats.st_mode))
         return (setPath(infoShell, infoShell->commands[1]));
-    return (setErrorMessage(infoShell->commands[0], ": Not a directory.", 1));
+    return (setquitMessage(infoShell->commands[0], ": Not a directory.", 1));
 }

@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:54:24 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/11 22:29:17 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/07/12 09:24:49 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void saveEnv(char **env, data_shell *infoShell)
     infoShell->myenv = malloc(sizeof(char **) * (sizeTab(env) + 1));
 
     if (!infoShell->myenv)
-        errorMessage("malloc()", 84);
+        quitMessage("malloc()", 84);
     for (int i = 0; env[i] != NULL; i++, j++)
         infoShell->myenv[j] = strdup(env[i]);
     infoShell->myenv[j] = NULL;

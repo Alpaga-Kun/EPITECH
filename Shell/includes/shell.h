@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:46:48 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/12 09:08:25 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/07/12 09:24:49 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef struct ptr_builtin_s
 } ptrBuiltin;
 
 /* ░░░░░░░░░░░░░░░░░ ERROR ░░░░░░░░░░░░░░░░░░░░░░░░░░ */
-void errorMessage(char const *msg, int exitStatus);
-int setErrorMessage(char const *command, char const *msg, int returnStatus);
+void quitMessage(char const *msg, int exitStatus);
+int setquitMessage(char const *command, char const *msg, int returnStatus);
 /* ░░░░░░░░░░░░░░░░░ TOOLS ░░░░░░░░░░░░░░░░░░░░░░░░░░ */
 void freeTabs(char **tabs);
 size_t sizeTab(char **tabs);

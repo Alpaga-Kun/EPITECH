@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:54:41 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/12 09:05:49 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/07/12 09:24:49 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ data_shell *structure(char **env)
     data_shell *new = malloc(sizeof(data_shell));
 
     if (!new)
-        errorMessage("malloc()", 84);
+        quitMessage("malloc()", 84);
     if (getcwd(newPath, sizeof(newPath)) == NULL)
-        errorMessage("getcwd()", 84);
+        quitMessage("getcwd()", 84);
     new->pathDir = false;
     new->exec = NULL;
     new->commands = NULL;
