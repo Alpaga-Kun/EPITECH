@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 20:30:16 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/12 09:24:49 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/07/21 20:14:28 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int setPath(data_shell *infoShell, char const *path)
     chdir(path);
     free(infoShell->oldPath);
     infoShell->oldPath = strdup(getcwd(newPath, sizeof(newPath)));
-    fprintf(stdout, "[%s]\n", infoShell->oldPath);
     return (0);
 }
 
