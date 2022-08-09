@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:06:58 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/08/05 17:56:36 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/08/09 19:14:44 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void doOperand(char **tabs, char *listOperand)
         {'/', &infinyDiv},
     };
 
-    for (int i = 0; listOperand[i] != '\0'; i++) {
+    for (size_t i = 0; i < strlen(listOperand); i++) {
         for (int j = 0; j != 4; j++) {
             if (op[i].operand == listOperand[i]) {
                 if (result) {
