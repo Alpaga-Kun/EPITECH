@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:06:58 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/08/09 19:14:44 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/08/16 17:11:37 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@ void doOperand(char **tabs, char *listOperand)
 
     for (size_t i = 0; i < strlen(listOperand); i++) {
         for (int j = 0; j != 4; j++) {
-            if (op[i].operand == listOperand[i]) {
+            if (op[j].operand == listOperand[i]) {
                 if (result) {
                     sprintf(tmp, "%s", result);
                     free(result);
                 }
-                result = (op[i].ptr((result == NULL ? tabs[pos] : tmp), (pos < 2 ? tabs[pos + 1] : tabs[pos])));
-                fprintf(stdout, "Resultat: %s\n", result);
+                result = (op[j].ptr((result == NULL ? tabs[pos] : tmp), \
+                    (pos < 2 ? tabs[pos + 1] : tabs[pos])));
+                fprintf(stdout, "Resultat: %s\n\n", result);
                 (pos < 2 ? pos += 2 : pos++);
                 break;
             }
