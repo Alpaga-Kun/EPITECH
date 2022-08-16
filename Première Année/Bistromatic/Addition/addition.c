@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 20:37:42 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/08/16 17:12:39 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/08/16 19:48:25 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int deduction = 0;
 
-char *cleanOff(char *result)
+static char *cleanOff(char *result)
 {
     result = removeSpacesFromStr(result);
     if (result[0] == '0')
