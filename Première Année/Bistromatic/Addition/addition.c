@@ -6,11 +6,29 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 20:37:42 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/08/09 21:34:32 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/08/16 14:39:58 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prototypes.h"
+
+static bool deduction = false;
+
+static char setByOrEqualNine(char *number1, char *number2, int i)
+{
+    char ch = 0;
+
+    if (number1[i] == '9') {
+        deduction = true;
+        ch = ((number2[i] - '0') - 1) + '0';
+        return (ch);
+    } else if (number2[i] == '9') {
+        deduction = true;
+        ch = ((number1[i] - '0') - 1) + '0';
+        return (ch);
+    }
+    return ((number1[i] - '0') + (number2[i] - '0') + '0');
+}
 
 static char *addtion(char *number1, char *number2)
 {
@@ -19,13 +37,12 @@ static char *addtion(char *number1, char *number2)
 
     for (int i = 0; number1[i] != '\0'; i++) {
         printf("%c - %c\n", number1[i], number2[i]);
-        if (number1[i] == '9' || number2[i] == '9') {
-            fprintf(stdout, "Found!");
-        } else {
-            ch = (number1[i] - '0') + (number2[i] - '0') + '0';
-            printf("Char: %c\n", ch);
-            strncat(result, &ch, 1);
+        ch = setByOrEqualNine(number1, number2, i);
+        if (deduction == true) {
+            deduction = false;
+            number1[i + 1] = ((number1[i + 1] -  '0') + 1) + '0';
         }
+        strncat(result, &ch, 1);
     }
     fprintf(stdout, "Fin: [%s]\n", result);
     sprintf(result, "%s", strrev(result));
