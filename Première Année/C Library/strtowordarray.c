@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 16:57:08 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/08/18 18:39:39 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/08/18 19:12:19 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ char **sstrtowordarray(char const *s, char const *delim)
             tabs[x][y] = s[i];
         tabs[x][y] = '\0';
         x++;
-        for (; detect(s[i], delim) == true && s[i] != '\0'; i++);
     }
     tabs[x] = NULL;
     return (tabs);
