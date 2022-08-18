@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 15:27:22 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/08/18 18:55:31 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/08/18 19:08:56 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ bool iislower(char c);
 bool iisalpha(char c);
 bool iisdigit(char c);
 bool iisspace(char c);
+
+char ttolower(char c);
+char ttoupper(char c);
 
 size_t sstrlen(char const *);
 size_t ttablen(char const **);
