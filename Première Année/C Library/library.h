@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 15:27:22 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/08/18 17:36:10 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/08/18 18:55:31 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ void ffreetabs(char **);
 void pputerror(char const *);
 void pprinttabs(char **);
 
+bool iisupper(char c);
+bool iislower(char c);
+bool iisalpha(char c);
+bool iisdigit(char c);
+bool iisspace(char c);
+
 size_t sstrlen(char const *);
 size_t ttablen(char const **);
 
@@ -36,3 +42,5 @@ char *sstrdup(char const *);
 char *sstrcpy(char *, char const *);
 char *sstrcat(char const *, char const *);
 char *sstrncat(char const *, char const *, size_t);
+
+char **sstrtowordarray(char const *s, char const *delim);
