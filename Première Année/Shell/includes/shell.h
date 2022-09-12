@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:46:48 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/09/12 15:17:24 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/09/12 16:46:31 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ typedef struct data_shell_s
     char **commands;
     char *oldPath;
     bool pathDir;
+    bool redirect;
+    bool pointvir;
+    bool piped;
 } data_shell;
 
 typedef struct ptr_builtin_s

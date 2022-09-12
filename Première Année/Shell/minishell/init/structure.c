@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:54:41 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/09/12 16:07:16 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/09/12 16:48:47 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ data_shell *structure(char **env)
     if (getcwd(newPath, sizeof(newPath)) == NULL)
         quitMessage("getcwd()", 84);
     new->pathDir = false;
+    new->piped = false;
+    new->redirect = false;
+    new->pointvir = false;
     new->exec = NULL;
     new->commands = NULL;
     new->oldPath = strdup(newPath);

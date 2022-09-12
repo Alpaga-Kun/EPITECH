@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 20:01:02 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/09/12 16:00:17 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/09/12 17:25:50 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,39 @@
 static void prompt(data_shell *infoShell)
 {
     char newPath[PATH_MAX] = {0};
-    fprintf(stdout, "🐾 \033[35m\033[1m%s 🐾 \033[37m\033[1m(\033[36m\033[1m%s\033[37m\033[1m) ~>\033[0m ", \
+    fprintf(stdout, "🐾 \033[35m\033[1m%s 🐾 \033[37m\033[1m(\
+\033[36m\033[1m%s\033[37m\033[1m) ~>\033[0m ", \
         infoShell->user, getcwd(newPath, sizeof(newPath)));
+}
+
+static void scanner(char *line, data_shell *infoShell)
+{
+    for (int i = 0; line[i] != '\0'; i++)
+        (line[i] == '|' ? infoShell->piped = true : \
+        line[i] == '>' ? infoShell->redirect = true : \
+        line[i] == ';' ? infoShell->pointvir = true : 0);
+}
+
+static int attritubeProcess(char *line, data_shell *infoShell)
+{
+    scanner(line, infoShell);
+    if (infoShell->piped == true) {
+        infoShell->commands = wordsArray(line, "|");
+        return (fprintf(stdout, "Pipe Function.\n"));
+    }
+    if (infoShell->pointvir == true) {
+        infoShell->commands = wordsArray(line, ";");
+        return (fprintf(stdout, "PointVir Function.\n"));
+    }
+    if (infoShell->redirect == true) {
+        infoShell->commands = wordsArray(line, ">");
+        return (fprintf(stdout, "Redirect Function.\n"));
+    }
+    infoShell->commands = wordsArray(line, " \t\n");
+    (infoShell->commands != NULL ? searchSystem(infoShell) : 0);
+    infoShell->piped = false;
+    infoShell->redirect = false;
+    infoShell->pointvir = false;
 }
 
 int coreSystem(data_shell *infoShell)
@@ -34,8 +65,7 @@ int coreSystem(data_shell *infoShell)
         }
         if (strncmp(line, "exit", 4) == 0)
             break;
-        infoShell->commands = wordsArray(line, " \t\n");
-        (infoShell->commands != NULL ? searchSystem(infoShell) : 0);
+        attritubeProcess(line, infoShell);
         freeTabs(infoShell->commands);
         if (isatty(0))
             prompt(infoShell);
