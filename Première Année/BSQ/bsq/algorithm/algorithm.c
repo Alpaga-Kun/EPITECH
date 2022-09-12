@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 16:29:47 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/08/24 17:17:53 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/08/24 20:04:32 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 static int setFirstLine(char **tabs)
 {
-    int i = 0;
-
-    for (int x = 0; tabs[i][x] != '\0'; x++)
-        tabs[i][x] = (tabs[i][x] == 'o' ? 1 : 2);
+    for (int x = 0; tabs[0][x] != '\0'; x++)
+        tabs[0][x] = (tabs[0][x] == 'o' ? 1 : 2);
     for (int y = 0; tabs[y] != NULL; y++)
-        tabs[y][i] = (tabs[y][i] == 'o' || tabs[y][i] == 1 ? 1 : 2);
+        tabs[y][0] = (tabs[y][0] == 'o' || tabs[y][0] == 1 ? 1 : 2);
     return (0);
 }
 

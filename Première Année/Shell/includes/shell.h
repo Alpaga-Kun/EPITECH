@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:46:48 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/12 09:24:49 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/09/12 15:17:24 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct data_shell_s
 {
     char *exec;
     char *home;
+    char *user;
     char **myenv;
     char **commands;
     char *oldPath;

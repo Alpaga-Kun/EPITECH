@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 20:30:16 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/21 20:14:28 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/09/12 16:15:02 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ static int setPath(data_shell *infoShell, char const *path)
 int cdSystem(data_shell *infoShell)
 {
     struct stat stats = {0};
-    stat(infoShell->commands[1], &stats);
+    (infoShell->commands[1] == NULL ? 0 : stat(infoShell->commands[1], &stats));
 
+    if (infoShell->commands[1] == NULL)
+        return (chdir(infoShell->home));
     if (strcmp(infoShell->commands[1], "-") == 0)
         return (chdir(infoShell->oldPath));
     if (strcmp(infoShell->commands[1], "~") == 0)
