@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 20:48:21 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/07/11 22:42:34 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/09/14 14:30:58 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,19 @@ static char **infoPath(char **myenv)
     return (NULL);
 }
 
-char *findPath(data_shell *infoShell)
+char *findPath(data_shell *infoShell, bool state)
 {
     char *exec = NULL;
     char **newPath = NULL;
 
-    if (access(infoShell->commands[0], X_OK) == 0)
-        return (strdup(infoShell->commands[0]));
+    if (access((state == true ? infoShell->commands[0] :
+        infoShell->commandsPipe[0]), X_OK) == 0)
+        return (strdup((state == true ? infoShell->commands[0] :
+            infoShell->commandsPipe[0])));
     if ((newPath = infoPath(infoShell->myenv)) == NULL)
         return (NULL);
-    if ((exec = catchPath(newPath, infoShell->commands[0])) != NULL)
+    if ((exec = catchPath(newPath, (state == true ? infoShell->commands[0] :
+        infoShell->commandsPipe[0]))) != NULL)
         return (exec);
     return (NULL);
 }

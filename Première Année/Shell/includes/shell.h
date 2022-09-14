@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:46:48 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/09/12 16:46:31 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/09/14 14:30:09 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ typedef struct data_shell_s
     char *exec;
     char *home;
     char *user;
+    char *oldPath;
     char **myenv;
     char **commands;
-    char *oldPath;
+    char **commandsPipe;
     bool pathDir;
     bool redirect;
     bool pointvir;
@@ -34,28 +35,30 @@ typedef struct ptr_builtin_s
     int (*ptr)(data_shell *);
 } ptrBuiltin;
 
-/* ░░░░░░░░░░░░░░░░░ ERROR ░░░░░░░░░░░░░░░░░░░░░░░░░░ */
+/* ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ERROR ░░░░░░░░░░░░░░░░░░░░░░░░░░ */
 void quitMessage(char const *msg, int exitStatus);
 int setquitMessage(char const *command, char const *msg, int returnStatus);
-/* ░░░░░░░░░░░░░░░░░ TOOLS ░░░░░░░░░░░░░░░░░░░░░░░░░░ */
+/* ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ TOOLS ░░░░░░░░░░░░░░░░░░░░░░░░░░ */
 void freeTabs(char **tabs);
 size_t sizeTab(char **tabs);
 void displayTabs(char **tabs);
 char *findInEnv(char **myenv, char const *word);
 char **wordsArray(char *line, char const *delim);
 bool notOnlyDelimiter(char const *line, char const *delim);
-/* ░░░░░░░░░░░░░░░░░ INITIALISATION ░░░░░░░░░░░░░░░░░ */
+/* ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ INITIALISATION ░░░░░░░░░░░░░░░░░ */
 data_shell *structure(char **env);
 void freeStructure(data_shell *infoShell);
 void initializer(char **env, data_shell *infoShell);
-/* ░░░░░░░░░░░░░░░░░ CORE SYSTEM ░░░░░░░░░░░░░░░░░░░░░ */
+/* ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ CORE SYSTEM ░░░░░░░░░░░░░░░░░░░░░ */
 int coreSystem(data_shell *infoShell);
 int searchSystem(data_shell *infoShell);
-/* ░░░░░░░░░░░░░░░░░ BUILTIN ░░░░░░░░░░░░░░░░░░░░░░░░░ */
+/* ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ BUILTIN ░░░░░░░░░░░░░░░░░░░░░░░░░ */
 int cdSystem(data_shell *infoShell);
 int envSystem(data_shell *infoShell);
 int setenvSystem(data_shell *infoShell);
 int unsetenvSystem(data_shell *infoShell);
-/* ░░░░░░░░░░░░░░░░░ PATH ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ */
-char *findPath(data_shell *infoShell);
+/* ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PATH ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ */
+char *findPath(data_shell *infoShell, bool state);
 int execBinary(data_shell *infoShell);
+/* ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PIPE ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ */
+int thePipe(data_shell *infoShell);

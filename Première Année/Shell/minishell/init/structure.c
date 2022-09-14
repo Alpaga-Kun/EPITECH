@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:54:41 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/09/12 16:48:47 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/09/14 14:26:40 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ data_shell *structure(char **env)
     new->pointvir = false;
     new->exec = NULL;
     new->commands = NULL;
+    new->commandsPipe = NULL;
     new->oldPath = strdup(newPath);
     initializer(env, new);
     new->home = findInEnv(env == NULL ? new->myenv : env, "HOME=");

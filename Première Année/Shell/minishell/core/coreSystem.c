@@ -6,7 +6,7 @@
 /*   By: Alpaga-Kun <teambodzen20@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 20:01:02 by Alpaga-Kun        #+#    #+#             */
-/*   Updated: 2022/09/12 17:25:50 by Alpaga-Kun       ###   ########.fr       */
+/*   Updated: 2022/09/14 14:23:27 by Alpaga-Kun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int attritubeProcess(char *line, data_shell *infoShell)
     scanner(line, infoShell);
     if (infoShell->piped == true) {
         infoShell->commands = wordsArray(line, "|");
-        return (fprintf(stdout, "Pipe Function.\n"));
+        return (thePipe(infoShell));
     }
     if (infoShell->pointvir == true) {
         infoShell->commands = wordsArray(line, ";");
@@ -43,11 +43,11 @@ static int attritubeProcess(char *line, data_shell *infoShell)
         infoShell->commands = wordsArray(line, ">");
         return (fprintf(stdout, "Redirect Function.\n"));
     }
-    infoShell->commands = wordsArray(line, " \t\n");
-    (infoShell->commands != NULL ? searchSystem(infoShell) : 0);
     infoShell->piped = false;
     infoShell->redirect = false;
     infoShell->pointvir = false;
+    infoShell->commands = wordsArray(line, " \t\n");
+    return (infoShell->commands != NULL ? searchSystem(infoShell) : 0);
 }
 
 int coreSystem(data_shell *infoShell)
